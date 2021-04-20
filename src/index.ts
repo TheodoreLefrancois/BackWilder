@@ -15,12 +15,12 @@ mongoose
   })
 
   .then(() => console.log("Connected to database"))
-  .catch((err) => console.log(err));
+  .catch((err: any) => console.log(err));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (req: any, res: any) => {
   res.send("Hello World");
   WilderModel.init().then(() => {
     const firstWilder = new WilderModel({
@@ -39,11 +39,11 @@ app.get("/", (req, res) => {
     });
     firstWilder
       .save()
-      .then((result) => {
+      .then((result: any) => {
         console.log("success: ", result);
       })
-      .catch((err) => {
-        console.log(("error: ", err));
+      .catch((err: any) => {
+        console.log(err);
       });
   });
 });
